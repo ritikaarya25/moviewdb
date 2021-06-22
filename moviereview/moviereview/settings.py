@@ -25,7 +25,7 @@ SECRET_KEY = 'n(r#4de!ibjjez^c(2ik&t7fm*h^hd=g3!!i7%d^#8x1h@!p9t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['moviereview2508.herokuapp.com','localhost']
 
 
 # Application definition
@@ -119,3 +119,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles' )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
